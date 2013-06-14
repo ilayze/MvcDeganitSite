@@ -83,7 +83,7 @@ namespace MvcDeganitSite.Controllers
         
         //
         // GET: /Recipes/Edit/5
- 
+        [Authorize]
         public ActionResult Edit(int id)
         {
             Recipe recipe = db.Recipes.Find(id);
@@ -109,7 +109,7 @@ namespace MvcDeganitSite.Controllers
 
         //
         // GET: /Recipes/Delete/5
- 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             Recipe recipe = db.Recipes.Find(id);
@@ -127,6 +127,7 @@ namespace MvcDeganitSite.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [Authorize]
         public ActionResult NavigationWords(int id)
         {
             Recipe recipe = db.Recipes
