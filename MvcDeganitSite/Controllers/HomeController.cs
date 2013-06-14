@@ -31,6 +31,8 @@ namespace MvcDeganitSite.Controllers
             if (!String.IsNullOrEmpty(name))
             {
                 var navWord = db.NavigationWords.Where(n => n.Name == name).Single();
+                viewModel.chosenNavigationWord = navWord;
+
                 List<Recipe> recipesByNavigationWords = new List<Recipe>();
                 foreach (var recipe in db.Recipes)
                 {

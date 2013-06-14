@@ -17,37 +17,22 @@
     <br />
     מי שרוצה להכנס נא לבוא עם חיוך!1
 </p>
-@* 
-@using (Html.BeginForm())
-{
-    <h2>חיפוש מתכון לפי מילת ניווט</h2>
-    <div class="editor-label">
-            @Html.LabelFor(model => model.NavigateList, "מילות ניווט")
-        </div>
-    
-    <div class="editor-field">
-    <p>בחר מהרשימה הבאה:<select>
-                                <option></option>
-                               @foreach (var nav in Model.NavigateList)
-                               {
-                                   <option value="@nav.Name">@nav.Name</option>
-                               }
-                           </select>
-                        @Html.DropDownList("NavName", String.Empty)
-                           <input type="submit" value="בחר" />
-                           </p>
-                       
 
-    </div>
-}
-    *@
 <div onclick="show();">לבחירת מתכון לפי מילות ניווט<strong><button>לחץ כאן</button></strong>
  <br /> <br />
  </div>
 <div id="hide"  style="display:none">
       @foreach (var nav in Model.NavigateList)
       {
-        @Html.ActionLink(@nav.Name, "Index", new { name = @nav.Name })<span> |</span>
+        if(Model.mainCategoryId==default(int))
+        {
+            @Html.ActionLink(@nav.Name, "Index", new { name = @nav.Name })<span> |</span>
+        }
+        else
+        {
+            @Html.ActionLink(@nav.Name, "Index", new {id=@Model.mainCategoryId, name = @nav.Name })<span> |</span>
+        }
+        
       }
 </div>
 
@@ -85,7 +70,14 @@
 <div>
 @foreach (var item in Model.MainCategories)
 {
-    @Html.ActionLink(@item.Name, "Index", new { id = @item.MainCategoryId }) <span>|</span>
+    if(Model.chosenNavigationWord!=null)
+    {   
+        @Html.ActionLink(@item.Name, "Index", new { id = @item.MainCategoryId,name=Model.chosenNavigationWord.Name }) <span>|</span>
+    }
+    else
+    {
+         @Html.ActionLink(@item.Name, "Index", new { id = @item.MainCategoryId }) <span>|</span>
+    }
 }
 </div>
 
