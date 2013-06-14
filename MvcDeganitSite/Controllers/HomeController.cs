@@ -23,26 +23,33 @@ namespace MvcDeganitSite.Controllers
             ViewBag.Message = "אתר המתכונים של דגנית";
             if (id != null)
             {
-                viewModel.RecID = viewModel.MainCategories.Where(m => m.MainCategoryId == id).Single().MainCategoryId;
-                viewModel.Recipes = db.Recipes.Where(r => r.MainCategoryID == viewModel.RecID);
+                viewModel.mainCategoryId = viewModel.MainCategories.Where(m => m.MainCategoryId == id).Single().MainCategoryId;
+                viewModel.Recipes = db.Recipes.Where(r => r.MainCategoryID == viewModel.mainCategoryId);
                 ViewBag.Name = viewModel.MainCategories.Where(m => m.MainCategoryId == id).Single().Name;
             }
-            /*
+            
             if (!String.IsNullOrEmpty(name))
             {
                 var navWord = db.NavigationWords.Where(n => n.Name == name).Single();
-                IEnumerable<HashSet<string>> recipeHS;
-                foreach(var recipe in db.Recipes)
-                   foreach(var navv in recipe.NavigationWords)
-                   {
-                        
-                   }
+                List<Recipe> recipesByNavigationWords = new List<Recipe>();
+                foreach (var recipe in db.Recipes)
+                {
+                    foreach (var recipeNavWord in recipe.NavigationWords)
+                    {
+                        if (recipeNavWord.Name == navWord.Name)
+                        {
+                            recipesByNavigationWords.Add(recipe);
+                        }
+                    }
+                }
+
+                viewModel.RecipeByChoosenNavigateWord = recipesByNavigationWords;
                     
 
-                viewModel.RecipeByChoosenNavigateWord = db.Recipes.Where(n =>).
+               // viewModel.RecipeByChoosenNavigateWord = db.Recipes.Where(n =>).
                 ViewBag.Nav = name;
             }
-             * */
+            
             
             return View(viewModel);
         }
