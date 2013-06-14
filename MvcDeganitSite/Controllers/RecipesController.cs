@@ -17,13 +17,16 @@ namespace MvcDeganitSite.Controllers
         //
         // GET: /Recipes/
 
-        public ViewResult Index(string searchString)
+        public ViewResult Index(string searchString,AllRecipesView viewStrategy=AllRecipesView.Advance)
         {
             var recipes = db.Recipes.Include(r => r.MainCategory);
             if(!String.IsNullOrEmpty(searchString))
             {
                 recipes= recipes.Where(r => r.Name.Contains(searchString) || r.Description.Contains(searchString) );
             }
+            
+            ViewBag.viewStrategy = viewStrategy;
+            
             return View(recipes.ToList());
         }
 
@@ -216,5 +219,11 @@ namespace MvcDeganitSite.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+    }
+
+    public enum AllRecipesView
+    {
+        Basic,
+        Advance
     }
 }

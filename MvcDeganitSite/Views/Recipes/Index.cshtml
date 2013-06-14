@@ -14,33 +14,57 @@
     <p dir="rtl"> <strong> חפש מתכון(שם מתכון או תיאור) </strong> @Html.TextBox("searchString")  
         <input type="submit" value="חפש" /></p>
 }
-<table class="MainTbl" >
-    <tr>
-    @{
-    int cnt = 0;
-    foreach (var item in Model)
-    {
-        if (cnt++ % 5 == 0)
+
+@if(ViewBag.viewStrategy==MvcDeganitSite.Controllers.AllRecipesView.Advance)
+{
+    <table class="MainTbl" >
+        <tr>
+        @{
+        int cnt = 0;
+        foreach (var item in Model)
         {
-            @: </tr><tr>
-        }
-        @:<td align="center" >
-           <strong>  @item.Name</strong> <br />
-            @item.Description <br />
-            <a href="@item.Url" target="_blank"><img src="../../Content/recipesPictures/@item.PictureName" alt="" height="150px" width="200" />  </a>
-        @Html.ActionLink("ערוך", "Edit", new { id = item.RecipeID }) <span> | </span>
-        @Html.ActionLink("מחק","Delete",new{id= item.RecipeID})  <span> |</span>
-        @Html.ActionLink(" ניווט","NavigationWords", new{id= item.RecipeID})
+            if (cnt++ % 5 == 0)
+            {
+                @: </tr><tr>
+            }
+            @:<td align="center" >
+               <strong>  @item.Name</strong> <br />
+                @item.Description <br />
+                <a href="@item.Url" target="_blank"><img src="../../Content/recipesPictures/@item.PictureName" alt="" height="150px" width="200" />  </a>
+            @Html.ActionLink("ערוך", "Edit", new { id = item.RecipeID }) <span> | </span>
+            @Html.ActionLink("מחק","Delete",new{id= item.RecipeID})  <span> |</span>
+            @Html.ActionLink(" ניווט","NavigationWords", new{id= item.RecipeID})
                                                                     
-       @: </td>
+           @: </td>
        
                                                                  
-    }
-    @:</tr>
-    @: <br />
+        }
+        @:</tr>
+        @: <br />
     
 
 
+    }
+    </table>
+    <p>@Html.ActionLink("עבור לתצוגה בסיסית","Index",new{ viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Basic})</p>
 }
-</table>
+else
+{
+    <ul>
+    @{
+        foreach (var item in Model)
+        {
+            <li><a href="@item.Url">  @item.Name  @item.Description </a> |
+                 @Html.ActionLink("ערוך", "Edit", new { id = item.RecipeID }) <span> | </span>
+                @Html.ActionLink("מחק","Delete",new{id= item.RecipeID})  <span> |</span>
+                @Html.ActionLink(" ניווט","NavigationWords", new{id= item.RecipeID})
+            </li>
+        }
+    }
+    
+    </ul>
+    <p>@Html.ActionLink("עבור לתצוגה מתקדמת","Index",new{ viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Advance})
+
+    </p>
+}
    
