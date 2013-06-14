@@ -21,7 +21,9 @@
 <div onclick="show();">לבחירת מתכון לפי מילות ניווט<strong><button>לחץ כאן</button></strong>
  <br /> <br />
  </div>
-<div id="hide"  style="display:none">
+<div id="hide"  @if(Model.chosenNavigationWord==null)
+                {@:style="display:none"
+                }>
       @foreach (var nav in Model.NavigateList)
       {
         <!--if earlier we have chosen a mani category to display keep it-->
