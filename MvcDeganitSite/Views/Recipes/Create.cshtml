@@ -1,0 +1,74 @@
+﻿@model MvcDeganitSite.Models.Recipe
+      
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>הוסף</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>הוסף מתכון</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Url)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Url)
+            @Html.ValidationMessageFor(model => model.Url)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PictureName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PictureName)
+            @Html.ValidationMessageFor(model => model.PictureName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MainCategoryID, "קטגוריה ראשית")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("MainCategoryID", String.Empty)
+            @Html.ValidationMessageFor(model => model.MainCategoryID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Excellent)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Excellent)
+            @Html.ValidationMessageFor(model => model.Excellent)
+        </div>
+
+        <p>
+            <input type="submit" value="הוסף" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("חזרה למתכונים", "Index")
+</div>

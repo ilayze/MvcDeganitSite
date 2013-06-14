@@ -1,0 +1,22 @@
+﻿@model MvcDeganitSite.Models.Recipe
+@{
+    ViewBag.Title = "ChooseMainCategory";
+}
+
+
+<h2>בחר קטגוריה ראשית </h2>
+@using (Html.BeginForm())
+{
+<div class="editor-label">
+            @Html.LabelFor(model => model.MainCategoryID, "קטגוריה ראשית")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("MainCategoryID", String.Empty)
+            @Html.ValidationMessageFor(model => model.MainCategoryID)
+            <input type="submit" value="בחר" />
+        </div>
+
+}
+<div>
+    @Html.ActionLink("חזרה למתכונים", "Index")
+</div>

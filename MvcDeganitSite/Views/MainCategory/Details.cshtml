@@ -1,0 +1,25 @@
+﻿@model MvcDeganitSite.Models.MainCategory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>MainCategory</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">picture</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.picture)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.MainCategoryId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

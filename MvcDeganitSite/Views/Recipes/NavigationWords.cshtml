@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "NavigationWords";
+}
+
+<h1>מילות ניווט</h1>
+<p>כדי להקל על מציאת מתכונים, אפשר להוסיף לכל מתכון מילות ניווט
+ <br /> 
+ על מנת שיהיה יותר פשוט למצוא אותו...
+ בחר את מילות הניווט המתאימות למתכון:
+ <br />
+ 
+</p>
+@using (Html.BeginForm())
+{
+<fieldset>
+<div class="editor-field"> 
+<table>
+        <tr>
+            @{
+    int count = 0;
+    List<MvcDeganitSite.ViewModels.assignedRecipeNavigationWords> NavigationWords = ViewBag.NavigationWords;
+
+    foreach (var word in NavigationWords)
+    {
+        if (count++ % 7 == 0)
+        {
+                        @: </tr><tr>
+                    }
+                    @: <td>
+                            <input type="checkbox"
+                                    name="selectedNavigationWords"
+                                    value="@word.Name"
+                                    @(Html.Raw(word.Assigned ? "checked=\" checked\"" : "")) />
+                        @word.Name
+                    @:</td>
+                        
+    }
+                @: </tr>
+            }
+
+            </table>
+            </div>
+
+            <p>
+                <input type="submit" value="Save" /> 
+            </p>
+   </fieldset> 
+}
+    <div>
+       @Html.ActionLink("חזרה למתכונים", "Index")
+    </div>
+               
+           
+
+

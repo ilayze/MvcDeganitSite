@@ -1,0 +1,45 @@
+﻿@model MvcDeganitSite.Models.Recipe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Recipe</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">Url</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Url)
+    </div>
+
+    <div class="display-label">PictureName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PictureName)
+    </div>
+
+    <div class="display-label">MainCategory</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MainCategory.Name)
+    </div>
+
+    <div class="display-label">Excellent</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Excellent)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RecipeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
