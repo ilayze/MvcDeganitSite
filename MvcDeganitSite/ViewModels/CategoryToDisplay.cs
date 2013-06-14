@@ -12,7 +12,7 @@ namespace MvcDeganitSite.ViewModels
     {
         public IEnumerable<MainCategory> MainCategories { get; set; }
         public IEnumerable<Recipe> Recipes { get; set; }
-        public int RecID { get; set; }
+        public int mainCategoryId { get; set; }
         public IEnumerable<NavigationWord> NavigateList { get; set; }
         public IEnumerable<Recipe> RecipeByChoosenNavigateWord { get; set; }
             
