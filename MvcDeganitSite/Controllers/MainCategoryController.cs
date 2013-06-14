@@ -11,7 +11,7 @@ namespace MvcDeganitSite.Controllers
 { 
     public class MainCategoryController : Controller
     {
-        private RecipesContext db = new RecipesContext();
+         private RecipesContext db = new RecipesContext();
 
         //
         // GET: /MainCategory/
