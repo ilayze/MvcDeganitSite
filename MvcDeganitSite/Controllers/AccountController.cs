@@ -26,6 +26,7 @@ namespace MvcDeganitSite.Controllers
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
+            /*
             if (ModelState.IsValid)
             {
                 if (Membership.ValidateUser(model.UserName, model.Password))
@@ -49,6 +50,25 @@ namespace MvcDeganitSite.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+             * */
+            if (model.UserName == "דגנית" && model.Password == "1234" || model.UserName=="שי" && model.Password=="1234")
+            {
+                FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                       && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "שם משתמש או סיסמא לא נכונים");
+                return View(model);
+            }
         }
 
         //
@@ -75,6 +95,7 @@ namespace MvcDeganitSite.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
+            
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
