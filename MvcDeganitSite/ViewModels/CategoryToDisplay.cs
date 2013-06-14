@@ -27,6 +27,9 @@ namespace MvcDeganitSite.ViewModels
         /// </summary>
         public IEnumerable<Recipe> RecipeByChoosenNavigateWord { get; set; }
 
+        /// <summary>
+        /// The chosen navigation word from the home page
+        /// </summary>
         public NavigationWord chosenNavigationWord { get; set; }
             
     }

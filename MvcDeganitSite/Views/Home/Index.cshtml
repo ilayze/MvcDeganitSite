@@ -12,7 +12,7 @@
 
 <h2>@ViewBag.Message</h2>
 <p>
-   <!-- <img src="../../Content/pictures/ilayAndDeganit.JPG" width="1000px" height="500px" alt=""/><br />-->
+  <!-- <img src="../../Content/pictures/ilayAndDeganit.JPG" width="1000px" height="500px" alt=""/><br />-->
   שלום זהו אתר הבית של דגנית החמודה ועילי זידמן 
     <br />
     מי שרוצה להכנס נא לבוא עם חיוך!1
@@ -24,6 +24,7 @@
 <div id="hide"  style="display:none">
       @foreach (var nav in Model.NavigateList)
       {
+        <!--if earlier we have chosen a mani category to display keep it-->
         if(Model.mainCategoryId==default(int))
         {
             @Html.ActionLink(@nav.Name, "Index", new { name = @nav.Name })<span> |</span>
