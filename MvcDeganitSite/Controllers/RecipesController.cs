@@ -16,8 +16,7 @@ namespace MvcDeganitSite.Controllers
 
         //
         // GET: /Recipes/
-
-        public ViewResult Index(string searchString,AllRecipesView viewStrategy=AllRecipesView.Advance)
+                public ViewResult Index(string searchString,AllRecipesView viewStrategy=AllRecipesView.Advance)
         {
             var recipes = db.Recipes.Include(r => r.MainCategory);
             if(!String.IsNullOrEmpty(searchString))
@@ -26,7 +25,7 @@ namespace MvcDeganitSite.Controllers
             }
             
             ViewBag.viewStrategy = viewStrategy;
-            
+                        
             return View(recipes.ToList());
         }
 
