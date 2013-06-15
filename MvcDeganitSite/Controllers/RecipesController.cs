@@ -164,6 +164,12 @@ namespace MvcDeganitSite.Controllers
             PopulateAssigendRecipeNavigationWords(recipeToUptade);
             return View();
 
+        }
+
+        public ActionResult SuccessfulRecipes()
+        {
+            var successfulRecipes = db.Recipes.Where(r => r.Excellent == true);
+            return View(successfulRecipes);
 
         }
 

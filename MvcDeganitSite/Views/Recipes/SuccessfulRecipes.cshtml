@@ -1,0 +1,36 @@
+﻿@model IEnumerable<MvcDeganitSite.Models.Recipe>
+@{
+    ViewBag.Title = "מתכונים מוצלחים";
+}
+
+<h2>מתכונים מוצלחים</h2>
+
+<table class="MainTbl" >
+        <tr>
+        @{
+        int cnt = 0;
+        foreach (var item in Model)
+        {
+            if (cnt++ % 5 == 0)
+            {
+                @: </tr><tr>
+            }
+            @:<td align="center" >
+               <strong>  @item.Name</strong> <br />
+                @item.Description <br />
+                <a href="@item.Url" target="_blank"><img src="../../Content/recipesPictures/@item.PictureName" alt="" height="150px" width="200" />  </a>
+            @Html.ActionLink("ערוך", "Edit", new { id = item.RecipeID }) <span> | </span>
+            @Html.ActionLink("מחק","Delete",new{id= item.RecipeID})  <span> |</span>
+            @Html.ActionLink(" ניווט","NavigationWords", new{id= item.RecipeID})
+                                                                    
+           @: </td>
+       
+                                                                 
+        }
+        @:</tr>
+        @: <br />
+    
+
+
+    }
+    </table>
