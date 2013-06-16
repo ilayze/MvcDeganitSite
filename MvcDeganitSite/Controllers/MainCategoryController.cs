@@ -51,7 +51,7 @@ namespace MvcDeganitSite.Controllers
             if (ModelState.IsValid)
             {
                 var exist = db.MainCategories.Where(m => m.Name == maincategory.Name);
-                if (exist == null)
+                if (!exist.Any() )
                 {
                     db.MainCategories.Add(maincategory);
                     db.SaveChanges();

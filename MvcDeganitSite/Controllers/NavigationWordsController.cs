@@ -35,6 +35,7 @@ namespace MvcDeganitSite.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            ViewBag.ErrorMessage = "";
             return View();
         } 
 
@@ -46,10 +47,18 @@ namespace MvcDeganitSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-                db.NavigationWords.Add(navigationword);
-                db.SaveChanges();
-                return RedirectToAction("Index");  
+                var exist = db.NavigationWords.Where(m => m.Name == navigationword.Name);
+                if (!exist.Any() )
+                {
+                    db.NavigationWords.Add(navigationword);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    string error = "מילת ניווט קיימת כבר נא שני שם של מילת ניווט";
+                    ViewBag.ErrorMessage = error;
+                }
             }
 
             return View(navigationword);
