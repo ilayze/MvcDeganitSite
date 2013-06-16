@@ -1,4 +1,4 @@
-﻿@model MvcDeganitSite.Models.MainCategory
+﻿@model MvcDeganitSite.ViewModels.DeleteMainCategory
 
 @{
     ViewBag.Title = "מחיקה";
@@ -12,17 +12,17 @@
 
     <div class="display-label">שם</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
+        @Html.DisplayFor(model => model.mainCategory.Name)
     </div>
 @{
-    if(ViewBag.Recipes!=null)
-    {
+    
+        <h1 style="color:red">אזור מסוכן!!! אנא הביטי טוב במתכונים למטה שהולכים להמחק!</h1>
         <h2>מתכונים שימחקו</h2>
        <table class="MainTbl" >
         <tr>
         @{
         int cnt = 0;
-        foreach (var item in ViewBag.Recipes as IEnumerable<MvcDeganitSite.Models.Recipe>)
+        foreach (var item in Model.recipes)
         {
             if (cnt++ % 5 == 0)
             {
@@ -46,7 +46,7 @@
     }
     </table>  
     }
-    }
+    
 
     
 </fieldset>

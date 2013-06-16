@@ -91,6 +91,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\assignedRecipeNavigationWords.cs" />
     <Compile Include="ViewModels\CategoryToDisplay.cs" />
+    <Compile Include="ViewModels\DeleteMainCategory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\pictures\ilayAndDeganit.JPG" />

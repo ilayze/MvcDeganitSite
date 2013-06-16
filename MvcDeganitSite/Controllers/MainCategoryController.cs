@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcDeganitSite.Models;
+using MvcDeganitSite.ViewModels;
 
 namespace MvcDeganitSite.Controllers
 { 
@@ -83,10 +84,13 @@ namespace MvcDeganitSite.Controllers
         [Authorize]
         public ActionResult Delete(int id)
         {
+            var ToDelete = new DeleteMainCategory();
             MainCategory maincategory = db.MainCategories.Find(id);
-          //  var recipes = db.MainCategories.Where(m=> m.MainCategoryId==maincategory.MainCategoryId).Select(r=>r.Recipes).ToList();
-           // ViewBag.Recipes = recipes;
-            return View(maincategory);
+            var recipes = db.Recipes.Where(m=>m.MainCategoryID==maincategory.MainCategoryId);
+           
+            ToDelete.mainCategory = maincategory;
+            ToDelete.recipes = recipes;
+            return View(ToDelete);
         }
 
         //
