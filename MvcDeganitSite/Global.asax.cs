@@ -37,7 +37,7 @@ namespace MvcDeganitSite
             /*The application is now set up so that when you access the database for the first time in a given run of the 
             * application, the Entity Framework compares the database to the model (your RecipeContext class). If there's a difference, 
             * the application drops and re-creates the database.  */
-            Database.SetInitializer<RecipesContext>(new RecipesInitializer());
+           // Database.SetInitializer<RecipesContext>(new RecipesInitializer());
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);

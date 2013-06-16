@@ -6,8 +6,13 @@ using System.Data.Entity;
 
 namespace MvcDeganitSite.Models
 {
+    public class RecipeInitializer
+    {
+    }
+    /*
     public class RecipesInitializer :DropCreateDatabaseIfModelChanges<RecipesContext>
     {
+
         protected override void Seed(RecipesContext context)
         {
             var mainCategories = new List<MainCategory>
@@ -61,4 +66,5 @@ namespace MvcDeganitSite.Models
            
         }
     }
+     * */
 }
