@@ -36,8 +36,11 @@ namespace MvcDeganitSite.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            ViewBag.ErrorMessag = "";
             return View();
-        } 
+        }
+
+      
 
         //
         // POST: /MainCategory/Create
@@ -47,9 +50,18 @@ namespace MvcDeganitSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.MainCategories.Add(maincategory);
-                db.SaveChanges();
-                return RedirectToAction("Index");  
+                var exist = db.MainCategories.Where(m => m.Name == maincategory.Name);
+                if (exist == null)
+                {
+                    db.MainCategories.Add(maincategory);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    string error = "הקטגוריה הראשית קיימת כבר נא שני שם קטגוריה";
+                    ViewBag.ErrorMessage = error;
+                }
             }
 
             return View(maincategory);
