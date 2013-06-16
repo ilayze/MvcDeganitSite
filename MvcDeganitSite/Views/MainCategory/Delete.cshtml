@@ -14,6 +14,39 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
+@{
+    if(ViewBag.Recipes!=null)
+    {
+        <h2>מתכונים שימחקו</h2>
+       <table class="MainTbl" >
+        <tr>
+        @{
+        int cnt = 0;
+        foreach (var item in ViewBag.Recipes as IEnumerable<MvcDeganitSite.Models.Recipe>)
+        {
+            if (cnt++ % 5 == 0)
+            {
+                @: </tr><tr>
+            }
+            @:<td align="center" >
+               <strong>  @item.Name</strong> <br />
+                @item.Description <br />
+                <a href="@item.Url" target="_blank"><img src="../../Content/recipesPictures/@item.PictureName" alt="" height="150px" width="200" />  </a>
+         
+                                                                    
+           @: </td>
+       
+                                                                 
+        }
+        @:</tr>
+        @: <br />
+    
+
+
+    }
+    </table>  
+    }
+    }
 
     
 </fieldset>

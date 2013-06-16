@@ -84,6 +84,8 @@ namespace MvcDeganitSite.Controllers
         public ActionResult Delete(int id)
         {
             MainCategory maincategory = db.MainCategories.Find(id);
+          //  var recipes = db.MainCategories.Where(m=> m.MainCategoryId==maincategory.MainCategoryId).Select(r=>r.Recipes).ToList();
+           // ViewBag.Recipes = recipes;
             return View(maincategory);
         }
 
