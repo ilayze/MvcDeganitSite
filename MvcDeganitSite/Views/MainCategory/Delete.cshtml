@@ -1,28 +1,25 @@
 ﻿@model MvcDeganitSite.Models.MainCategory
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "מחיקה";
 }
 
-<h2>Delete</h2>
+<h2>מחיקה</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>האם את בטוחה שאת רוצה למחוק את הקטגוריה הזאת?</h3>
 <fieldset>
-    <legend>MainCategory</legend>
+    <legend>קטגוריה ראשית</legend>
 
-    <div class="display-label">Name</div>
+    <div class="display-label">שם</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
 
-    <div class="display-label">picture</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.picture)
-    </div>
+    
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="מחקי" /> |
+        @Html.ActionLink("חזרה", "Index")
     </p>
 }

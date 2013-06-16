@@ -46,7 +46,11 @@
 
     }
     </table>
-    <p>@Html.ActionLink("עבור לתצוגה בסיסית","Index",new{ viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Basic})</p>
+    <p>@Html.ActionLink("עבור לתצוגה בסיסית","Index",new{ viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Basic}) |
+        @Html.ActionLink("הוסף מילות ניווט", "Index", "NavigationWords") 
+        
+
+    </p>
 }
 else
 {
@@ -63,7 +67,8 @@ else
     }
     
     </ul>
-    <p>@Html.ActionLink("עבור לתצוגה מתקדמת","Index",new{ viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Advance})
+    <p>@Html.ActionLink("עבור לתצוגה מתקדמת","Index",new{ viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Advance}) |
+       @Html.ActionLink("הוסף מילות ניווט", "Index", "NavigationWords")
 
     </p>
 }

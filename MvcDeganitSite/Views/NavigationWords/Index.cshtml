@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MvcDeganitSite.Models.NavigationWord>
+
+@{
+    ViewBag.Title = "מילות ניווט";
+}
+
+<h2>מילות ניווט</h2>
+
+<p>
+    @Html.ActionLink("צור מילת ניווט חדשה", "Create")
+</p>
+<table>
+    <tr>
+        <th>שם מילת הניווט</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Name  |
+            @Html.ActionLink("מחק", "Delete", new { id=item.Name })
+        </td>
+    </tr>
+}
+
+</table>

@@ -32,7 +32,7 @@ namespace MvcDeganitSite.Controllers
 
         //
         // GET: /MainCategory/Create
-
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -80,7 +80,7 @@ namespace MvcDeganitSite.Controllers
 
         //
         // GET: /MainCategory/Delete/5
- 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             MainCategory maincategory = db.MainCategories.Find(id);

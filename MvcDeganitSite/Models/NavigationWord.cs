@@ -12,6 +12,7 @@ namespace MvcDeganitSite.Models
         [Key]
         [Required(ErrorMessage="נא הכנס שם למילת ניווט")]
         [MaxLength(100)]
+        [Display(Name="שם מילת הניווט")]
         public string Name { get; set; }
         public virtual ICollection<Recipe> Recipes { get; set; }
     }

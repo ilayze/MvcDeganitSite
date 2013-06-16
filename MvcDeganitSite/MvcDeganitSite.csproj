@@ -76,6 +76,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainCategoryController.cs" />
+    <Compile Include="Controllers\NavigationWordsController.cs" />
     <Compile Include="Controllers\RecipesController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Global.asax.cs">
@@ -231,6 +232,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Recipes\SuccessfulRecipes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\NavigationWords\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\NavigationWords\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\NavigationWords\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\NavigationWords\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\NavigationWords\Delete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

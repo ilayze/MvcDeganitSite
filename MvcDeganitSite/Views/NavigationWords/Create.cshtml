@@ -1,10 +1,10 @@
-﻿@model MvcDeganitSite.Models.MainCategory
+﻿@model MvcDeganitSite.Models.NavigationWord
 
 @{
-    ViewBag.Title = "קטגוריה ראשית חדשה";
+    ViewBag.Title = "מילת ניווט חדשה";
 }
 
-<h2>קטגוריה ראשית חדשה</h2>
+<h2>מילת ניווט חדשה</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -12,24 +12,14 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>קטגוריה ראשית</legend>
-
-        <div class="editor-label">
+        <legend>מילת ניווט</legend>
+          <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.picture)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.picture)
-            @Html.ValidationMessageFor(model => model.picture)
-        </div>
-
         <p>
             <input type="submit" value="יצירה" />
         </p>
@@ -37,5 +27,5 @@
 }
 
 <div>
-    @Html.ActionLink("לכל הקטגוריות הראשיות", "Index")
+    @Html.ActionLink("לרשימת מילות הניווט", "Index")
 </div>

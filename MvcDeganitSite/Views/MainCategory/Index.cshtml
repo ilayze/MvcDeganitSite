@@ -1,22 +1,20 @@
 ﻿@model IEnumerable<MvcDeganitSite.Models.MainCategory>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "קטגוריות ראשיות";
 }
 
-<h2>Index</h2>
+<h2>קטגוריות ראשיות</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("צרי קטגוריה ראשית חדשה", "Create")
 </p>
 <table>
     <tr>
         <th>
-            Name
+            שם
         </th>
-        <th>
-            picture
-        </th>
+        
         <th></th>
     </tr>
 
@@ -25,13 +23,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.picture)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MainCategoryId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MainCategoryId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MainCategoryId })
+          
+            @Html.ActionLink("מחיקה", "Delete", new { id=item.MainCategoryId })
         </td>
     </tr>
 }

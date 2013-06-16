@@ -1,0 +1,22 @@
+﻿@model MvcDeganitSite.Models.NavigationWord
+
+@{
+    ViewBag.Title = "מחיקה";
+}
+
+<h2>מחיקה</h2>
+
+<h3>האם את בטוחה שאת רוצה למחוק את מילת הניווט הזו?</h3>
+<fieldset>
+    <legend>מילת ניווט</legend>
+    <div class="display-label">שם מילת הניווט</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="מחיקה" /> |
+        @Html.ActionLink("חזור לרשימה", "Index")
+    </p>
+}
