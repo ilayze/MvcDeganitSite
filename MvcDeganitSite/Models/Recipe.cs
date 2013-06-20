@@ -31,6 +31,7 @@ namespace MvcDeganitSite.Models
         public virtual MainCategory MainCategory { get; set; }
 
         public virtual ICollection<NavigationWord> NavigationWords { get; set; }
+        public virtual ICollection<User> Users { get; set; }
 
 
         [Display(Name="?מתכון מוצלח")]

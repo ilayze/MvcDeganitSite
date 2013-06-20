@@ -14,6 +14,7 @@ namespace MvcDeganitSite.Models
        public DbSet<MainCategory> MainCategories { get; set; }
        public DbSet<Recipe> Recipes { get; set; }
        public DbSet<NavigationWord> NavigationWords { get; set; }
+       public DbSet<User> Users { get; set; }
 
        protected override void OnModelCreating(DbModelBuilder modelBuilder)
        {
@@ -26,6 +27,12 @@ namespace MvcDeganitSite.Models
                .Map(t => t.MapLeftKey("RecipeID")
                    .MapRightKey("Name")
                    .ToTable("RecipeNavigations"));
+           modelBuilder.Entity<Recipe>()
+               .HasMany(n => n.Users).WithMany(r => r.Recipes) //many to many
+               .Map(t=>t.MapLeftKey("RecipeID")
+                .MapRightKey("UserName")
+                 .ToTable("UsersRecipes"));
+
            
          
                
