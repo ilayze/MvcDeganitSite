@@ -12,6 +12,7 @@ namespace MvcDeganitSite.Controllers
     public class AccountController : Controller
     {
 
+        private RecipesContext db = new RecipesContext();
         //
         // GET: /Account/LogOn
 
@@ -51,7 +52,10 @@ namespace MvcDeganitSite.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
              * */
-            if (model.UserName == "דגנית" && model.Password == "1234" || model.UserName=="שי" && model.Password=="1234")
+            var user = new User {Name=model.UserName,Password=model.Password };
+            bool exist = db.Users.Where(u => u.Name== user.Name && u.Password==user.Password).Any();
+
+            if (exist)
             {
                 FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                 if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
@@ -95,7 +99,7 @@ namespace MvcDeganitSite.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
-            
+            /*
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
@@ -104,7 +108,7 @@ namespace MvcDeganitSite.Controllers
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+                    FormsAuthentication.SetAuthCookie(model.UserName, false);// createPersistentCookie
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -112,9 +116,27 @@ namespace MvcDeganitSite.Controllers
                     ModelState.AddModelError("", ErrorCodeToString(createStatus));
                 }
             }
+             * */
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            var user = new User { Name = model.UserName, Password = model.Password };
+            bool exist = db.Users.Where(u => u.Name == user.Name).Any();
+
+            if (exist)
+            {
+                ModelState.AddModelError("", "שם משתמש קיים במסד אנא בחר שם אחר");
+                return View(model);
+            }
+            else
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+
+                FormsAuthentication.SetAuthCookie(model.UserName, false);// createPersistentCookie
+                return RedirectToAction("Index", "Home");
+            }
+
+
+           
         }
 
         //

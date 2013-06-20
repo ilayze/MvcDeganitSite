@@ -88,6 +88,7 @@
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipesContext.cs" />
     <Compile Include="Models\RecipesInitializer.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\assignedRecipeNavigationWords.cs" />
     <Compile Include="ViewModels\CategoryToDisplay.cs" />

@@ -15,9 +15,13 @@ namespace MvcDeganitSite.Controllers
         private RecipesContext db = new RecipesContext();
         public ActionResult Index(int? id,string name)
         {
+           string username= User.Identity.Name;
+           if (String.IsNullOrEmpty(username))
+           {
+               return RedirectToAction("LogOn","Account");
+           }
             var viewModel = new CategoryToDisplay();
             viewModel.MainCategories = db.MainCategories;
-          //  ViewBag.NavigationWords = new SelectList(db.NavigationWords,"Name","Name");
             viewModel.NavigateList = db.NavigationWords;
            
             ViewBag.Message = "אתר המתכונים של דגנית";
