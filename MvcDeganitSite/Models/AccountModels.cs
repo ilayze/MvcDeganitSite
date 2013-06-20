@@ -54,14 +54,14 @@ namespace MvcDeganitSite.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "סיסמא חייבת להיות באורך של 4 תוים לפחות", MinimumLength = 4)]
         [DataType(DataType.Password)]
         [Display(Name = "סיסמא")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "אשר סיסמא")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "הסיסמא והאישור לא תואמים")]
         public string ConfirmPassword { get; set; }
     }
 }
