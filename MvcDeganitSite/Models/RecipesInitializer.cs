@@ -6,11 +6,13 @@ using System.Data.Entity;
 
 namespace MvcDeganitSite.Models
 {
+    /*
     public class RecipeInitializer
     {
     }
-    /*
-    public class RecipesInitializer :DropCreateDatabaseIfModelChanges<RecipesContext>
+     * */
+    
+    public class RecipesInitializer :DropCreateDatabaseAlways<RecipesContext>
     {
 
         protected override void Seed(RecipesContext context)
@@ -61,10 +63,23 @@ namespace MvcDeganitSite.Models
               
             };
             navigationWords.ForEach(n => context.NavigationWords.Add(n));
+           
+
+            var users = new List<User>
+            {
+                new User{Name="דגנית",Password="1234",Recipes=recipes},
+                new User{Name="עילי",Password="1234",Recipes=recipes},
+                new User{Name="שי",Password="1234"}
+
+            };
+
+            users.ForEach(u => context.Users.Add(u));
+
             context.SaveChanges();
+
 
            
         }
     }
-     * */
+   
 }
