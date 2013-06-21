@@ -1,6 +1,6 @@
 ﻿@model MvcDeganitSite.ViewModels.CategoryToDisplay
 @{
-    ViewBag.Title = "דף הבית";
+    ViewBag.Title = "האתר של דגנית";
 }
 
 <!--script to show an element that is hiden-->
@@ -13,7 +13,7 @@
 <h2>@ViewBag.Message</h2>
 <p>
   <!-- <img src="../../Content/pictures/ilayAndDeganit.JPG" width="1000px" height="500px" alt=""/><br />-->
-  שלום זהו אתר הבית של דגנית החמודה ועילי זידמן 
+  שלום זהו אתר הבית של דגנית החמודה  
     <br />
     מי שרוצה להכנס נא לבוא עם חיוך!1
 </p>
@@ -26,19 +26,24 @@
                 }>
       @foreach (var nav in Model.NavigateList)
       {
-        <!--if earlier we have chosen a mani category to display keep it-->
+        <!--if earlier we have chosen a main category to display keep it-->
         if(Model.mainCategoryId==default(int))
         {
-            @Html.ActionLink(@nav.Name, "Index", new { name = @nav.Name })<span> |</span>
+            @Html.ActionLink(@nav.Name, "Index", new { navigationName = @nav.Name })<span> |</span>
         }
         else
         {
-            @Html.ActionLink(@nav.Name, "Index", new {id=@Model.mainCategoryId, name = @nav.Name })<span> |</span>
+            @Html.ActionLink(@nav.Name, "Index", new {categoryId=@Model.mainCategoryId, navigationName = @nav.Name })<span> |</span>
         }
         
       }
 </div>
-  <br />  @Html.ActionLink("הוסיפי מילת ניווט", "Create", "NavigationWords")
+  <br />
+  
+    @if( ViewBag.Administrator == true)
+    {
+         @Html.ActionLink("הוסיפי מילת ניווט", "Create", "NavigationWords")
+    }
 
 <br />
 @if (Model.RecipeByChoosenNavigateWord != null)
@@ -76,14 +81,18 @@
 {
     if(Model.chosenNavigationWord!=null)
     {   
-        @Html.ActionLink(@item.Name, "Index", new { id = @item.MainCategoryId,name=Model.chosenNavigationWord.Name }) <span>|</span>
+        @Html.ActionLink(@item.Name, "Index", new { categoryId = @item.MainCategoryId,navigationName=Model.chosenNavigationWord.Name }) <span>|</span>
     }
     else
     {
-         @Html.ActionLink(@item.Name, "Index", new { id = @item.MainCategoryId }) <span>|</span>
+         @Html.ActionLink(@item.Name, "Index", new { categoryId = @item.MainCategoryId }) <span>|</span>
     }
 }
-  <br /><br />  @Html.ActionLink("הוסיפי קטגוריה ראשית", "Create", "MainCategory")
+  <br /><br />
+    @if(ViewBag.Administrator == true)
+    {
+      @Html.ActionLink("הוסיפי קטגוריה ראשית", "Create", "MainCategory")
+    }
 </div>
 
 @if (Model.Recipes != null)
