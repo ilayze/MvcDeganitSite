@@ -16,8 +16,25 @@ namespace MvcDeganitSite.Controllers
 
         //
         // GET: /Recipes/
-        public ViewResult Index(string searchString,AllRecipesView viewStrategy=AllRecipesView.Advance)
+        public ActionResult Index(string searchString,AllRecipesView viewStrategy=AllRecipesView.Advance)
         {
+            var userName = User.Identity.Name;
+            if(String.IsNullOrEmpty(userName))
+            {
+                return RedirectToAction("LogOn","Account");
+            }
+
+            if (userName == "דגנית")
+            {
+                ViewBag.Administarator = true;
+            }
+            else
+            {
+                ViewBag.Administarator = false;
+            }
+
+            ViewBag.CurrentUser = userName;
+
             var recipes = db.Recipes.Include(r => r.MainCategory);
             if(!String.IsNullOrEmpty(searchString))
             {
@@ -167,9 +184,41 @@ namespace MvcDeganitSite.Controllers
 
         public ActionResult SuccessfulRecipes()
         {
+            var userName = User.Identity.Name;
+            if (String.IsNullOrEmpty(userName))
+            {
+                return RedirectToAction("LogOn", "Account");
+            }
+
             var successfulRecipes = db.Recipes.Where(r => r.Excellent == true);
             return View(successfulRecipes);
 
+        }
+
+        public ActionResult AddRecipe(int id)
+        {
+            string userName = User.Identity.Name;
+           
+            var recipe = db.Recipes.Where(r => r.RecipeID == id).Single();
+            bool exist = (from user in recipe.Users
+                          where user.Name == userName
+                          select user).Any();
+            if (!exist)
+            {
+                var userInDb = (from user in db.Users
+                                where user.Name == userName
+                                select user).Single();
+                userInDb.Recipes.Add(recipe);
+                db.SaveChanges();
+
+                ViewBag.AddRecipeMessage = "המתכון " + recipe.Name +" "+ "הוסף בהצלחה!";
+            }
+            else
+            {
+                ViewBag.AddRecipeMessage = "שגיאה בהוספת המתכון: המתכון כבר קיים במאגר שלך!";
+            }
+
+            return View();
         }
 
         private void UptadeNavigationWords(string[] selectedNavigationWords, Recipe recipeToUptade)
