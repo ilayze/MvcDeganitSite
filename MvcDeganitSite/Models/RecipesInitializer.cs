@@ -52,7 +52,7 @@ namespace MvcDeganitSite.Models
 
             };
             recipes.ForEach(r => context.Recipes.Add(r));
-            context.SaveChanges();
+            
 
             var navigationWords = new List<NavigationWord>
             {
@@ -73,13 +73,18 @@ namespace MvcDeganitSite.Models
 
             };
 
+
+
             users.ForEach(u => context.Users.Add(u));
 
             context.SaveChanges();
 
 
+
            
         }
+
+        
     }
    
 }
