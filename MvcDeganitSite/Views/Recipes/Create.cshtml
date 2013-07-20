@@ -10,7 +10,9 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm(null,null,FormMethod.Post, new{ enctype = "multipart/form-data" }))
+{
+    
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>הוסף מתכון</legend>
@@ -40,10 +42,10 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.PictureName)
+            @Html.LabelFor(model => model.PictureName) 
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PictureName)
+           <input type="file" name="myfile"/> 
             @Html.ValidationMessageFor(model => model.PictureName)
         </div>
 
@@ -64,7 +66,7 @@
         </div>
 
         <p>
-            <input type="submit" value="הוסף" />
+            <input type="submit" value="הוסף"  />
         </p>
     </fieldset>
 }

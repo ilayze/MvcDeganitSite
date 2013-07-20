@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -84,8 +85,17 @@ namespace MvcDeganitSite.Controllers
         // POST: /Recipes/Create
 
         [HttpPost]
-        public ActionResult Create(Recipe recipe)
+        public ActionResult Create(Recipe recipe,HttpPostedFileBase myfile)
         {
+            var files = Request.Files;
+            
+            if (myfile!=null)
+            {
+                var fileName = Path.GetFileName(myfile.FileName);
+                var path = Path.Combine("~/Content/recipesPictures", fileName);
+                myfile.SaveAs(Server.MapPath(path));
+                recipe.PictureName = fileName;
+            }
             if (ModelState.IsValid)
             {
                 db.Recipes.Add(recipe);
