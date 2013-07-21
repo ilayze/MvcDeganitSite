@@ -12,7 +12,7 @@ namespace MvcDeganitSite.Models
     }
      * */
     
-    public class RecipesInitializer :DropCreateDatabaseAlways<RecipesContext>
+    public class RecipesInitializer :DropCreateDatabaseIfModelChanges<RecipesContext>
     {
 
         protected override void Seed(RecipesContext context)
