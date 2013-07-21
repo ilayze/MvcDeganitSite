@@ -85,15 +85,15 @@ namespace MvcDeganitSite.Controllers
         // POST: /Recipes/Create
 
         [HttpPost]
-        public ActionResult Create(Recipe recipe,HttpPostedFileBase myfile)
+        public ActionResult Create(Recipe recipe,HttpPostedFileBase userFile)
         {
             var files = Request.Files;
             
-            if (myfile!=null)
+            if (userFile!=null)
             {
-                var fileName = Path.GetFileName(myfile.FileName);
+                var fileName = Path.GetFileName(userFile.FileName);
                 var path = Path.Combine("~/Content/recipesPictures", fileName);
-                myfile.SaveAs(Server.MapPath(path));
+                userFile.SaveAs(Server.MapPath(path));
                 recipe.PictureName = fileName;
             }
             if (ModelState.IsValid)
@@ -121,8 +121,16 @@ namespace MvcDeganitSite.Controllers
         // POST: /Recipes/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Recipe recipe)
+        public ActionResult Edit(Recipe recipe,HttpPostedFileBase userFile)
         {
+            if (userFile != null)
+            {
+                var fileName = Path.GetFileName(userFile.FileName);
+                var path = Path.Combine("~/Content/recipesPictures", fileName);
+                userFile.SaveAs(Server.MapPath(path));
+                recipe.PictureName = fileName;
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(recipe).State = EntityState.Modified;
