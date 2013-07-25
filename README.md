@@ -19,8 +19,7 @@ __Follow me__:
 ## Development Documentation for VirtuClass:  
 
 ### How to get the code? 
-The original source is available through the mail of the author:  
-Mr. Ilay Zeidman 
+The original source is available through the mail of the author Ilay Zeidman. 
 In addition the source code is available in the project page in the repository.
 
 ### Locate information about a directory structure and files?  
