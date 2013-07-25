@@ -24,7 +24,7 @@ In addition the source code is available in the project page in the repository.
 
 ### Locate information about a directory structure and files?  
 There are documentations in the classes about each variable, function and class  
-and in our very user friendly wiki page. 
+and in the very user friendly wiki page. 
 
 ### How to prepare a new version?  
 Each time a new version is released it will be published in a new folder with the new version number, and its updates.  
