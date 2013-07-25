@@ -19,9 +19,17 @@
                <strong>  @item.Name</strong> <br />
                 @item.Description <br />
                 <a href="@item.Url" target="_blank"><img src="../../Content/recipesPictures/@item.PictureName" alt="" height="150px" width="200" />  </a>
-            @Html.ActionLink("ערוך", "Edit", new { id = item.RecipeID }) <span> | </span>
-            @Html.ActionLink("מחק","Delete",new{id= item.RecipeID})  <span> |</span>
-            @Html.ActionLink(" ניווט","NavigationWords", new{id= item.RecipeID})
+            if(ViewBag.Administarator == true)
+            {
+                @Html.ActionLink("ערוך", "Edit", new { id = item.RecipeID }) <span> | </span>
+                @Html.ActionLink("מחק","Delete",new{id= item.RecipeID})  <span> |</span>
+                @Html.ActionLink(" ניווט","NavigationWords", new{id= item.RecipeID})
+            }
+            else
+            {
+                string currentUser = ViewBag.CurrentUser;
+                @Html.ActionLink("הוסף למאגר של " + currentUser, "AddRecipe", new { id = item.RecipeID });
+            }
                                                                     
            @: </td>
        

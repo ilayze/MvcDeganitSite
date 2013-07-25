@@ -79,6 +79,7 @@
     <Compile Include="Controllers\NavigationWordsController.cs" />
     <Compile Include="Controllers\RecipesController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\UserRepositoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Recipes\AddRecipe.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserRepository\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

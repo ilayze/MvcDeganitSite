@@ -55,7 +55,17 @@
 
     }
     </table>
-    <p>@Html.ActionLink("עבור לתצוגה בסיסית","Index",new{ viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Basic}) |
+    <p>
+         @if(ViewBag.searchString=="") 
+         {
+           @Html.ActionLink("עבור לתצוגה בסיסית","Index",new{ viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Basic}) 
+         }
+        else
+        {
+             @Html.ActionLink("עבור לתצוגה בסיסית","Index",new{searchString=ViewBag.searchString, viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Basic})  
+        }
+        
+        |
         @if (ViewBag.Administarator==true){@Html.ActionLink("הוסף מילות ניווט", "Index", "NavigationWords") }
         
 
@@ -84,8 +94,19 @@ else
     }
     
     </ul>
-    <p>@Html.ActionLink("עבור לתצוגה מתקדמת","Index",new{ viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Advance}) |
-      @if (ViewBag.Administarator==true){ @Html.ActionLink("הוסף מילות ניווט", "Index", "NavigationWords")}
+    <p>
+
+       @if(ViewBag.searchString=="") 
+       {
+       @Html.ActionLink("עבור לתצוגה מתקדמת","Index",new{ viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Advance}) 
+       }
+       else
+       {
+           @Html.ActionLink("עבור לתצוגה מתקדמת","Index",new{searchString=ViewBag.searchString, viewStrategy=MvcDeganitSite.Controllers.AllRecipesView.Advance}) 
+       }
+           |
+       @if (ViewBag.Administarator==true){ @Html.ActionLink("הוסף מילות ניווט", "Index", "NavigationWords")}
+      
 
     </p>
 }

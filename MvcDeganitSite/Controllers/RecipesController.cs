@@ -43,6 +43,14 @@ namespace MvcDeganitSite.Controllers
             }
             
             ViewBag.viewStrategy = viewStrategy;
+            if(String.IsNullOrEmpty(searchString))
+            {
+                ViewBag.searchString="";
+            }
+            else
+            {
+                ViewBag.searchString=searchString;
+            }
                         
             return View(recipes.ToList());
         }
@@ -88,6 +96,7 @@ namespace MvcDeganitSite.Controllers
         public ActionResult Create(Recipe recipe,HttpPostedFileBase userFile)
         {
             var files = Request.Files;
+            var userName = User.Identity.Name;
             
             if (userFile!=null)
             {
@@ -99,6 +108,10 @@ namespace MvcDeganitSite.Controllers
             if (ModelState.IsValid)
             {
                 db.Recipes.Add(recipe);
+                if (!String.IsNullOrEmpty(userName))
+                {
+                    db.Users.Where(usr => usr.Name == userName).Single().Recipes.Add(recipe);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");  
             }
@@ -207,6 +220,17 @@ namespace MvcDeganitSite.Controllers
             {
                 return RedirectToAction("LogOn", "Account");
             }
+
+            if (userName == "דגנית")
+            {
+                ViewBag.Administarator = true;
+            }
+            else
+            {
+                ViewBag.Administarator = false;
+            }
+
+            ViewBag.CurrentUser = userName;
 
             var successfulRecipes = db.Recipes.Where(r => r.Excellent == true);
             return View(successfulRecipes);
