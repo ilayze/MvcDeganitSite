@@ -45,6 +45,9 @@ namespace MvcDeganitSite.Controllers
             userEntity.Recipes.Remove(recipeToRemove);
             db.SaveChanges();
 
+            
+            ViewBag.CurrentUser = userName;
+
             return View("Index",userEntity.Recipes);
         }
 
