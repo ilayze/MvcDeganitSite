@@ -81,15 +81,23 @@ namespace MvcDeganitSite.Models
                 new Recipe {Name="לזניה מדהימה", Description="",Url="http://www.chef-lavan.co.il/item/8437",PictureName="לזניה_מדהימה.jpg",MainCategoryID=4},
             };
 
+            var soupsList = new List<Recipe>
+            {
+                new Recipe {Name="מרק כתום", Description="מצוין לכל ארוע",Url="http://www.mevashlim.com/Recipe/10670001.asp",PictureName="אין",MainCategoryID=2},
+                new Recipe {Name="מרק עדשים", Description="בריא",Url="http://www.chef-lavan.co.il/item/1101",PictureName="אין",MainCategoryID=2},
+                new Recipe {Name="מרק מינסטרונה", Description="מרק ממש טעים",Url="http://www.mako.co.il/food-recipes/recipes_column-soups/Recipe-3ceae79288a3c21004.htm",PictureName="אין",MainCategoryID=2},
+            };
+
             pieRecipes.ForEach(r => context.Recipes.Add(r));
             cakesRecipes.ForEach(r => context.Recipes.Add(r));
             capecakesRecipes.ForEach(r => context.Recipes.Add(r));
-
+            soupsList.ForEach(r => context.Recipes.Add(r));
 
 
             var allRecipes = new List<Recipe>(pieRecipes);
             allRecipes.AddRange(cakesRecipes);
             allRecipes.AddRange(capecakesRecipes);
+            allRecipes.AddRange(soupsList);
            
 
             var users = new List<User>
