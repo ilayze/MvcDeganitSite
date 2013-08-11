@@ -27,31 +27,7 @@ namespace MvcDeganitSite.Controllers
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
-            /*
-            if (ModelState.IsValid)
-            {
-                if (Membership.ValidateUser(model.UserName, model.Password))
-                {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                        && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
-                    {
-                        return Redirect(returnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "שם משתמש או סיסמא לא נכונים");
-                }
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-             * */
+           
             var user = new User {Name=model.UserName,Password=model.Password };
             bool exist = db.Users.Where(u => u.Name== user.Name && u.Password==user.Password).Any();
 
@@ -99,24 +75,7 @@ namespace MvcDeganitSite.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
-            /*
-            if (ModelState.IsValid)
-            {
-                // Attempt to register the user
-                MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
-
-                if (createStatus == MembershipCreateStatus.Success)
-                {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false);// createPersistentCookie
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(createStatus));
-                }
-            }
-             * */
+            
 
             var user = new User { Name = model.UserName, Password = model.Password };
             bool exist = db.Users.Where(u => u.Name == user.Name).Any();
