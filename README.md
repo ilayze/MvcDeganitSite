@@ -14,6 +14,7 @@ __Follow me__:
 
 - [Source Code](https://github.com/ilayze/MvcDeganitSite/tree/FirstVersion/MvcDeganitSite)
 - [Wiki Page](https://github.com/ilayze/MvcDeganitSite/wiki) 
+- [User Guide](https://github.com/ilayze/MvcDeganitSite/wiki/User-Guide)
  
 
 ## Development Documentation for VirtuClass:  
